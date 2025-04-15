@@ -1,23 +1,17 @@
 const http = require("http");
 const querystring = require("node:querystring");
-const narcissisticRequestHandler = require("./Narcissistic Numbers/requestHandler.js");
+//const requestHandler = require("./Narcissistic Numbers/requestHandler.js");
+//const requestHandler = require("./Stop gninnipS My sdroW/requestHandler.js");
+//const requestHandler = require("./HighAndLow/requestHandler.js");
+const requestHandler = require("./MorseCodePartOne/requestHandler.js");
 
 const server = http.createServer((req, res) => {
   var qs = req.url.split("?")[1];
   const query = querystring.parse(qs);
 
-  const result = narcissisticRequestHandler(query);
-  // const number = query.number;
-  // if (number === undefined) {
-  //   return "";
-  // }
-  // const numIsNarcissistic = isNarcissistic(number);
+  const response = requestHandler.default(query);
 
-  // const result =
-  //   number + " is " + (numIsNarcissistic ? "" : "not ") + "narcissistic.";
-
-  console.log(result);
-  res.end(result);
+  res.end(response);
 });
 
 server.listen(5002, () => {
